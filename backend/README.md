@@ -1,4 +1,4 @@
-# R U Ded?
+# What's Up?
 
 Ping URLs and verify expected status codes.
 
@@ -8,16 +8,13 @@ Send POST requests to a simple Flask application with the following data:
 
 ```
 {
-	"url": "http://hello.com",
-	"expected_status": 400
+	"environment": "dogsonscreek",
+	"branch": "doing-reports-things"
+    "jira_id": "tm-9001"
 }
 ```
 
-The key/value pair is added to the redis DB of your choice.  
-
-`recurring.py` can be used to call the URLs saved in the Redis store.  If the status
-returned by accessing the URL is not the expected status saved with the URL, then
-a bad response metric will be sent to DataDog.
+The key/value pair is added to the redis DB of your choice.
 
 ### Required Variables
 

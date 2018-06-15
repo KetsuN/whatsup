@@ -1,4 +1,4 @@
-import os 
+import os
 
 DEBUG = True
 REDIS_HOSTNAME = os.environ.get("REDIS_HOSTNAME")
