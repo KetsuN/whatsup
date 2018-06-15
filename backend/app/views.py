@@ -55,6 +55,10 @@ def update():
 @requires_auth
 def retrieve():
     key_values = {}
-    for key in redis_db.scan_iter("*"):
-        key_values[key] = json.loads(redis_db.get(key))
-    return app.response_class(response=json.dumps(key_values), status=200, mimetype="application/json")
+    for key in app.config["ACTIVE_ENVIRONMENTS"]:
+        value = redis_db.get(key)
+        if value:
+            key_values[key] = json.loads(value)
+        else:
+            key_values[key] = {"environment": None, "jira_id": None}
+    return app.response_class(response=json.dumps({"data": key_values}), status=200, mimetype="application/json")

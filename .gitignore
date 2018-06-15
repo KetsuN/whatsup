@@ -1,2 +1,4 @@
 *.pyc
 pycache
+uwsgi.ini
+.env

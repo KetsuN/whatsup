@@ -1,24 +1,41 @@
 # What's Up?
 
-Ping URLs and verify expected status codes.
+Keep track of testing environments through a simple flask app powered by a redis store.
 
 ### Overview
 
-Send POST requests to a simple Flask application with the following data:
+#### Update an environment
+Send POST requests to `/whatsup` with the following data:
 
 ```
 {
-	"environment": "dogsonscreek",
-	"branch": "doing-reports-things"
+    "environment": "testing-env-1",
+    "branch": "doing-reports-things",
     "jira_id": "tm-9001"
 }
 ```
 
 The key/value pair is added to the redis DB of your choice.
 
+#### Retrieve all environment states
+Send GET requests to `/whatsup` with the following data:
+
+```
+{
+    "data": {
+        "testing-env-1": {
+            "branch": "doing-reports-things",
+            "jira_id": "tm-9001"
+        },
+        ...
+    }
+}
+```
+
+The keys are the environment names on record and the values contain the branch and jira ticket IDs for the
+environment.
+
 ### Required Variables
 
-- REDIS_HOSTNAME - Hostname of the Redis database
-- REDIS_PASSWORD - Password to the Redis database
-- REDIS_PORT - Port to the Redis database
+- REDIS_URL - Fully qualified redis URL
 - API_KEY - API key used to interact with this application

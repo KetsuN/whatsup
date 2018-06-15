@@ -1,6 +1,6 @@
 from functools import wraps
 from flask import request, Response
-from config import API_KEY
+from app import app
 
 
 def failed_auth():
@@ -18,7 +18,7 @@ def requires_auth(f):
     @wraps(f)
     def decorated(*args, **kwargs):
         auth = request.headers.get("authorization")
-        if not auth or auth != API_KEY:
+        if not auth or auth != app.config["API_KEY"]:
             return failed_auth()
         return f(*args, **kwargs)
 
