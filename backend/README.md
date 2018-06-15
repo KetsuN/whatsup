@@ -6,7 +6,6 @@ Keep track of testing environments through a simple flask app powered by a redis
 
 #### Update an environment
 Send POST requests to `/whatsup` with the following data:
-
 ```
 {
     "environment": "testing-env-1",
@@ -19,7 +18,6 @@ The key/value pair is added to the redis DB of your choice.
 
 #### Retrieve all environment states
 Send GET requests to `/whatsup` with the following data:
-
 ```
 {
     "data": {
