@@ -37,5 +37,6 @@ environment.
 
 ### Required Variables
 
-- REDIS_URL - Fully qualified redis URL
-- API_KEY - API key used to interact with this application
+- `REDIS_URL` - Fully qualified redis URL
+- `API_KEY` - API key used to interact with this application
+- `ENVIRONMENT_NAMES` - Comma-separated list of environment names
